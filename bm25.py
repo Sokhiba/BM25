@@ -7,12 +7,10 @@ url = "https://raw.githubusercontent.com/castorini/anserini/master/src/main/reso
 
 # Ma'lumotlarni yuklab olish
 response = requests.get(url)
-topics = [
-    {"num": "001", "title": "economic growth policies"},
-    {"num": "002", "title": "inflation and economy"},
-    {"num": "003", "title": "monetary policy effects"}
-]
+topics = json.loads(response.text)
 
+# Kichik qismini ko'rib chiqamiz
+print("Misol uchun birinchi so'rov:")
 print(topics[0])
 
 # Oddiy dokumentlar bazasi (TREC hujjatlari emas, faqat misol uchun)
@@ -86,6 +84,7 @@ print(f"So'rov: {query}")
 print("BM25 bo'yicha hujjatlar reytingi:")
 for doc_id, score in sorted_scores:
     print(f"{doc_id}: {score:.4f}")
+
 
 
 
